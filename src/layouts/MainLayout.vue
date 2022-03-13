@@ -2,29 +2,44 @@
   <q-layout view="lHh Lpr lFf">
     <q-header elevated>
       <q-toolbar>
-        <q-btn
+        <!-- <q-btn
           flat
           dense
           round
           icon="menu"
           aria-label="Menu"
           @click="toggleLeftDrawer"
-        />
+        /> -->
 
-        <q-toolbar-title> Ramadan </q-toolbar-title>
+        <q-toolbar-title class="font-black"> Ramadan </q-toolbar-title>
 
         <q-separator dark vertical />
         <q-btn stretch flat label="Home" to="/" />
         <q-separator dark vertical />
         <q-btn stretch flat label="Quran" to="/quran" />
         <q-separator dark vertical />
-        <q-btn stretch flat label="Calenders" />
+        <!-- <q-btn stretch flat label="Calenders" /> -->
+        <q-btn-dropdown stretch flat label="Calenders">
+          <q-list>
+            <q-item-label header>Types</q-item-label>
+            <q-item clickable v-close-popup to="/hijri-calender">
+              <q-item-section>
+                <q-item-label>Hijri</q-item-label>
+              </q-item-section>
+            </q-item>
+            <q-item clickable v-close-popup to="/georgian-calender">
+              <q-item-section>
+                <q-item-label>Georgian</q-item-label>
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-btn-dropdown>
         <q-separator dark vertical />
-        <q-btn stretch flat label="Prayer Timings" />
+        <q-btn stretch flat label="Prayer Timings" to="/prayer-times" />
       </q-toolbar>
     </q-header>
 
-    <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
+    <!-- <q-drawer v-model="leftDrawerOpen" show-if-above bordered>
       <q-list>
         <q-item-label header> Essential Links </q-item-label>
 
@@ -34,18 +49,18 @@
           v-bind="link"
         />
       </q-list>
-    </q-drawer>
+    </q-drawer> -->
 
     <q-page-container>
       <router-view />
     </q-page-container>
 
-    <q-footer reveal="true" elevated>
+    <!-- <q-footer reveal="true" elevated>
       <q-toolbar>
-        <!-- <q-toolbar-title>Ramadan Site</q-toolbar-title> -->
+
         <p class="text-subtitle2">Ramadan Site</p>
       </q-toolbar>
-    </q-footer>
+    </q-footer> -->
   </q-layout>
 </template>
 
@@ -102,9 +117,7 @@ import { defineComponent, ref } from "vue";
 export default defineComponent({
   name: "MainLayout",
 
-  components: {
-    EssentialLink,
-  },
+  components: {},
 
   setup() {
     const leftDrawerOpen = ref(false);
